@@ -4,8 +4,8 @@ Our project uses USRP N210 Hardware Drives (UHD) and GNU Radio to collect signal
 
 # Team
 
-*Jiajin Cui (MEng - Autonomous Sytem)
-*Grace (Lunya) Cheng (MEng - Autonomous System)
+* Jiajin Cui (MEng - Autonomous Sytem)
+* Grace (Lunya) Cheng (MEng - Autonomous System)
 
 # Table of Content
 
