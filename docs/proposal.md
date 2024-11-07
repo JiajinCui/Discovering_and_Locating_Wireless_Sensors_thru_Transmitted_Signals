@@ -1,8 +1,7 @@
 # Project Proposal
 
 ## 1. Motivation & Objective
-
-What are you trying to do and why? (plain English without jargon)
+Many smart homes are equipped with sensors that collect wireless data about the environment and how people interact with their spaces. Yet, much of this information isn't fully utilized to understand daily activities and routines. By combining this sensor data with common knowledge about how devices like door, motion, and multi sensors are typically used, we can gain deeper insights into occupants' behaviors. Our objective is to develop a system that uses advanced AI models to interpret these wireless signals and access the sensor's location. This will enhance the smart home experience, making it more responsive and intuitive to the needs of its users.
 
 ## 2. State of the Art & Its Limitations
 
