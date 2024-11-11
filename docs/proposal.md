@@ -25,7 +25,7 @@ Novel dataset generation pipeline that generate large-scale datasets that
 
 Novel custom DL algorithm for multi-label multi-class spectrum sensing based on semantic segmentation that
 1. operates at the I/Q level instead of creating images
-2. classifies each and every I/Q sample incoming from the ADC without creating bounding boxes, thus increasing classification accuracy significantly.
+2. classifies each and every I/Q sample incoming from the ADC without creating bounding boxes, thus increasing classification accuracy significantly
 3. only uses 1024 I/Q samples as input, which leads to very low inference time.
 
 ## 4. Potential Impact
@@ -42,11 +42,24 @@ Broad impacts:
 
 ## 5. Challenges
 
-What are the challenges and risks?
+1. Data must be collected Over-the-Air (OTA) so as to capture real-world channel conditions and prepare the AI in a wireless setting with real radios
+2. OTA data invovles many possible combinations of time an frequency, which significantly increases the complexity  in the case of wideband spectrum sensing
+3. OTA data requries large protions of spectrum without any interference from external systems
+4. Training data that assumes syncronization between sensing and transmission center frequencies results in poor accuracy
 
 ## 6. Requirements for Success
 
 What skills and resources are necessary to perform the project?
+
+Resources:
+1. SDRs (USRP N210)
+2. Smart sensors that use different protocols
+3. GPUs
+   
+Skills:
+1. The usage of USRP N210 Software Defined Radio (SDR) for collecting wireless signals
+2. Signal Processing skills with GNU Radio or languages like python and matlab, etc
+3. Understanding of Deep Learning and RF signals
 
 ## 7. Metrics of Success
 
