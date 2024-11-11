@@ -5,9 +5,12 @@ Many smart homes are equipped with sensors that collect wireless data about the 
 
 ## 2. State of the Art & Its Limitations
 
-How is it done today, and what are the limits of current practice?
+You Only Look Once (YOLO) is a current widely-used object detection model that divides the input (usually an image) into grids. For signal classification, YOLO divide a signal into fixed-length windows, or bounding boxes. 
 
-Traditional sensing methods such as device fingerprinting, protocol-based identification  rely on image-based models that use bounding boxes with poor alignment that would cause high latency and low accuracy.  Moreover, these techniques usually require large datasets and assumptions that do not really reflect the real life conditions
+Drawbakcs of You Only Look Once (YOLO):
+1. This appraoch requires the creation of an image out of in-phase/quadrature (I/Q) samples, incurring additional latency. 
+2. Modern wireless signals such as 5G and LoRa can hardly confirm into square bounding boxes which leads to a significant amount of specturm being incorrectly classified as occupied, leading to poor specturm efficiency.
+Traditional sensing methods such as device fingerprinting, protocol-based identification rely on image-based models that use bounding boxes with poor alignment that would cause high latency and low accuracy.  Moreover, these techniques usually require large datasets and assumptions that do not really reflect the real life conditions
 
 ## 3. Novelty & Rationale
 
