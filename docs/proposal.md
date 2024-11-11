@@ -7,9 +7,13 @@ Many smart homes are equipped with sensors that collect wireless data about the 
 
 How is it done today, and what are the limits of current practice?
 
+Traditional sensing methods such as device fingerprinting, protocol-based identification  rely on image-based models that use bounding boxes with poor alignment that would cause high latency and low accuracy.  Moreover, these techniques usually require large datasets and assumptions that do not really reflect the real life conditions
+
 ## 3. Novelty & Rationale
 
 What is new in your approach and why do you think it will be successful?
+
+Stitching-the-Spectrum is a signal classification approach initiated by Uvaydov, Daniel and Zhang, etl. It creates a diverse training sample by stitching signals together. Later, the stitched signal would be fed into a U-Net-based segmentation model to handle the wideband signal, allowing each signal to be classified into a certain protocol class. We believe this approach to be useful in a smart home context because it has a better classification and localization accuracy than the traditional methods. It can handle multiple overlapping signals without prior knowledge of the real world such as the type or location of the sensor.
 
 ## 4. Potential Impact
 
