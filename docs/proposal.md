@@ -9,9 +9,9 @@ Many smart homes are equipped with sensors that collect wireless data about the 
 You Only Look Once (YOLO) is a current widely-used object detection model that divides the input (usually an image) into grids. For signal classification, YOLO divide a signal into fixed-length windows, or bounding boxes. 
 
 Limitations of You Only Look Once (YOLO):
-(i) This appraoch requires the creation of an image out of in-phase/quadrature (I/Q) samples, incurring additional latency. 
-(ii) Being a viable method for computer vision tasks, YOLO does not achieve the level of resolution required for wireless signals.
-(ii) Modern wireless signals such as 5G and LoRa can hardly confirm into square bounding boxes which leads to a significant amount of specturm being incorrectly classified as occupied, leading to poor specturm efficiency.
+1. This appraoch requires the creation of an image out of in-phase/quadrature (I/Q) samples, incurring additional latency. 
+2. Being a viable method for computer vision tasks, YOLO does not achieve the level of resolution required for wireless signals.
+3. Modern wireless signals such as 5G and LoRa can hardly confirm into square bounding boxes which leads to a significant amount of specturm being incorrectly classified as occupied, leading to poor specturm efficiency.
 
 
 ## 3. Novelty & Rationale
@@ -19,26 +19,26 @@ Limitations of You Only Look Once (YOLO):
 The approach we found in a paper is called Stitiching-the-Specturm, which "stitches" different signals together to create samples where signals are overlapping and affected by real-world noises and inferences.
 
 Novel dataset generation pipeline that generate large-scale datasets that 
-(i) contains signals collected On The Air(OTA) and are affected by real-world conditions
-(ii) can be completely labeled
-(iii) low latency 
+1. contains signals collected On The Air(OTA) and are affected by real-world conditions
+2. can be completely labeled
+3. low latency 
 
 Novel custom DL algorithm for multi-label multi-class spectrum sensing based on semantic segmentation that
-(i) operates at the I/Q level instead of creating images
-(ii) classifies each and every I/Q sample incoming from the ADC without creating bounding boxes, thus increasing classification accuracy significantly.
-(iii) only uses 1024 I/Q samples as input, which leads to very low inference time.
+1. operates at the I/Q level instead of creating images
+2. classifies each and every I/Q sample incoming from the ADC without creating bounding boxes, thus increasing classification accuracy significantly.
+3. only uses 1024 I/Q samples as input, which leads to very low inference time.
 
 ## 4. Potential Impact
 
 Technical impacts:
-(i) The network is able to achieve more accuracy (7% in the paper) than U-Net in the most challenging protocols(Wi-Fi and LTE) while maintaining similarly low latency
-(ii) The dataset generation pipeline makes the wideband spectrum sensing algorithm more accurate even with data collected from different devices, sampling rates, antennas.
-(iii) Intersection over Union (IoU) of 96.70%; 2.6ms of latency to process 100MHz of spectrum.
+1. The network is able to achieve more accuracy (7% in the paper) than U-Net in the most challenging protocols(Wi-Fi and LTE) while maintaining similarly low latency
+2. The dataset generation pipeline makes the wideband spectrum sensing algorithm more accurate even with data collected from different devices, sampling rates, antennas.
+3. Intersection over Union (IoU) of 96.70%; 2.6ms of latency to process 100MHz of spectrum.
 
 Broad impacts:
-(i) Less amount of data needed for understanding the signal (protocal, MAC address, etc.)
-(ii) A more accurate classification result that takes less time
-(iii) Significantly lower the difficulty of learning about the information of sensors (their types and locations) in a smart home without prior knowledge
+1. Less amount of data needed for understanding the signal (protocal, MAC address, etc.)
+2. A more accurate classification result that takes less time
+3. Significantly lower the difficulty of learning about the information of sensors (their types and locations) in a smart home without prior knowledge
 
 ## 5. Challenges
 
