@@ -1,26 +1,44 @@
 # Project Proposal
 
 ## 1. Motivation & Objective
+
 Many smart homes are equipped with sensors that collect wireless data about the environment and how people interact with their spaces. Yet, much of this information isn't fully utilized to understand daily activities and routines. By combining this sensor data with common knowledge about how devices like door, motion, and multi sensors are typically used, we can gain deeper insights into occupants' behaviors. Our objective is to develop a system that uses advanced AI models to interpret these wireless signals and access the sensor's location. This will enhance the smart home experience, making it more responsive and intuitive to the needs of its users.
 
 ## 2. State of the Art & Its Limitations
 
 You Only Look Once (YOLO) is a current widely-used object detection model that divides the input (usually an image) into grids. For signal classification, YOLO divide a signal into fixed-length windows, or bounding boxes. 
 
-Drawbakcs of You Only Look Once (YOLO):
-1. This appraoch requires the creation of an image out of in-phase/quadrature (I/Q) samples, incurring additional latency. 
-2. Modern wireless signals such as 5G and LoRa can hardly confirm into square bounding boxes which leads to a significant amount of specturm being incorrectly classified as occupied, leading to poor specturm efficiency.
-Traditional sensing methods such as device fingerprinting, protocol-based identification rely on image-based models that use bounding boxes with poor alignment that would cause high latency and low accuracy.  Moreover, these techniques usually require large datasets and assumptions that do not really reflect the real life conditions
+Limitations of You Only Look Once (YOLO):
+(i) This appraoch requires the creation of an image out of in-phase/quadrature (I/Q) samples, incurring additional latency. 
+(ii) Being a viable method for computer vision tasks, YOLO does not achieve the level of resolution required for wireless signals.
+(ii) Modern wireless signals such as 5G and LoRa can hardly confirm into square bounding boxes which leads to a significant amount of specturm being incorrectly classified as occupied, leading to poor specturm efficiency.
+
 
 ## 3. Novelty & Rationale
 
-What is new in your approach and why do you think it will be successful?
+The approach we found in a paper is called Stitiching-the-Specturm, which "stitches" different signals together to create samples where signals are overlapping and affected by real-world noises and inferences.
 
-Stitching-the-Spectrum is a signal classification approach initiated by Uvaydov, Daniel and Zhang, etl. It creates a diverse training sample by stitching signals together. Later, the stitched signal would be fed into a U-Net-based segmentation model to handle the wideband signal, allowing each signal to be classified into a certain protocol class. We believe this approach to be useful in a smart home context because it has a better classification and localization accuracy than the traditional methods. It can handle multiple overlapping signals without prior knowledge of the real world such as the type or location of the sensor.
+Novel dataset generation pipeline that generate large-scale datasets that 
+(i) contains signals collected On The Air(OTA) and are affected by real-world conditions
+(ii) can be completely labeled
+(iii) low latency 
+
+Novel custom DL algorithm for multi-label multi-class spectrum sensing based on semantic segmentation that
+(i) operates at the I/Q level instead of creating images
+(ii) classifies each and every I/Q sample incoming from the ADC without creating bounding boxes, thus increasing classification accuracy significantly.
+(iii) only uses 1024 I/Q samples as input, which leads to very low inference time.
 
 ## 4. Potential Impact
 
-If the project is successful, what difference will it make, both technically and broadly?
+Technical impacts:
+(i) The network is able to achieve more accuracy (7% in the paper) than U-Net in the most challenging protocols(Wi-Fi and LTE) while maintaining similarly low latency
+(ii) The dataset generation pipeline makes the wideband spectrum sensing algorithm more accurate even with data collected from different devices, sampling rates, antennas.
+(iii) Intersection over Union (IoU) of 96.70%; 2.6ms of latency to process 100MHz of spectrum.
+
+Broad impacts:
+(i) Less amount of data needed for understanding the signal (protocal, MAC address, etc.)
+(ii) A more accurate classification result that takes less time
+(iii) Significantly lower the difficulty of learning about the information of sensors (their types and locations) in a smart home without prior knowledge
 
 ## 5. Challenges
 
