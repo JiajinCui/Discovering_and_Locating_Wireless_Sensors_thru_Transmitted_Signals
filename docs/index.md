@@ -10,5 +10,5 @@ Our project uses USRP N210 Hardware Drives (UHD) and GNU Radio to collect signal
 # Table of Content
 
 * [Proposal](proposal)
-* [Midterm Checkpoint Presentation Slides]([http://](https://docs.google.com/presentation/d/1dAgBDvO6_kN2gAYZogn3WJgdgkkDxaCovcgp2-H0Jt8/edit#slide=id.g313f80e2c54_0_2380))
+* [Midterm Checkpoint Presentation Slides](https://drive.google.com/file/d/1AP8L3Kxx2CuYSfIlJb4jJUTY8fj0-uQI/view?usp=drive_link)
 * [Final Report](report)
