@@ -91,6 +91,19 @@ Describe the key tasks in executing your project, and in case of team project de
 
 List the key papers that you have identified relating to your project idea, and describe how they related to your project. Provide references (with full citation in the References section below).
 
+1. A Survey of Human Activity Recognition in Smart Homes based on IoT Sensors Algorithms:Taxonomies, Challenges and Opportunities with Deep Learning:
+
+This paper introduces Human Activity Recognition (HAR) in smart home settings, it gave us a overview of the ultimate purpose of our project (Infering human activities using sensor data and machine learning)
+
+2. Spectro-Temporal RF Identification using Deep Learning:
+
+This paper introduces a deep learning based system called WRIST for real-time RF signal identification. It employs a detection framework similar to YOLO to transform RF signals into 2D images for the purpose of detection of multiple signal types. It gave us an overview of how object identification methods in YOLO such as building bounding boxes could be applied to signal classification.
+
+3. Stitching the Spectrum: Semantic Spectrum Segmentation with Wideband Signal Stitching:
+
+We decided to use the method introduced in this paper for specturm sensing. It discussed inefficiency of traditional methods that rely on spectrograms and bounding boxes and introduced a data generation pipeline and a customized U_Net_based deep learning model.
+
+
 ### 9.b. Datasets
 
 List datasets that you have identified and plan to use. Provide references (with full citation in the References section below).
@@ -102,3 +115,9 @@ List softwate that you have identified and plan to use. Provide references (with
 ## 10. References
 
 List references correspondign to citations in your text above. For papers please include full citation and URL. For datasets and software include name and URL.
+
+[1] Bouchabou, Damien, et al. "A survey of human activity recognition in smart homes based on IoT sensors algorithms: Taxonomies, challenges, and opportunities with deep learning." Sensors 21.18 (2021): 6037. sensors-21-06037.pdf
+
+[2] Spectro-temporal RF identification using Deep Learning - arXiv. (n.d.). https://arxiv.org/pdf/2107.05114 
+
+[3] Uvaydov, D., Zhang, M., Robinson, C. P., D’Oro, S., Melodia, T., & Restuccia, F. (2024a, February 7). Stitching the spectrum: Semantic Spectrum segmentation with wideband signal stitching. arXiv.org. https://arxiv.org/abs/2402.03465 
