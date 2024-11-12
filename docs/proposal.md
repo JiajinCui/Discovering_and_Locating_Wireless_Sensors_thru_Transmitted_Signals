@@ -65,6 +65,13 @@ Skills:
 
 What are metrics by which you would check for success?
 
+For protocol classification:
+1. Intersection of Union (IoU): Fomular: Area of Intersection / Area of Uninon to indicate the quality of math between the predicted and ground truth boxes. (1 means perfect overlap and 0 means no overlap at all)
+
+For localization:
+1. The absolute value of difference between the calculated distance and the actual distance. (The smaller the difference the higher of localization accuracy)
+
+
 ## 8. Execution Plan
 
 Describe the key tasks in executing your project, and in case of team project describe how will you partition the tasks.
