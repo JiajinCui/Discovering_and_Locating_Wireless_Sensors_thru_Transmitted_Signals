@@ -13,10 +13,9 @@ Our project uses USRP N210 Hardware Drives (UHD) and GNU Radio to collect signal
 
 # 1. Introduction
 
-This section should cover the following items:
-
 * Motivation & Objective:
   Many smart homes are equipped with sensors that collect wireless data about the environment and how people interact with their spaces. Yet, much of this information isn’t fully utilized to understand daily activities and routines. By combining this sensor data with common knowledge about how devices like door, motion, and multi sensors are typically used, we can gain deeper insight into occupants’ behaviors. Our objective is to develop a system that uses advanced AI models to interpret these wireless signals and access the sensor’s location. This will enhance the smart home experience, making it more responsive and intuitive to the needs of its users.
+  
 * State of the Art & Its Limitations:
   You Only Look Once (YOLO) is a current widely used object detection model that divides the input (usually an image) into grids. For signal classification, YOLO divide a signal into fixed-length windows, or bounding boxes.
 
@@ -25,6 +24,7 @@ Limitations of You Only Look Once (YOLO):
 This approach requires the creation of an image out of in-phase/quadrature (I/Q) samples, incurring additional latency.
 Being a viable method for computer vision tasks, YOLO does not achieve the level of resolution required for wireless signals.
 Modern wireless signals such as 5G and LoRa can hardly confirm into square bounding boxes which leads to a significant amount of spectrum being incorrectly classified as occupied, leading to poor spectrum efficiency.
+
 * Novelty & Rationale: What is new in your approach and why do you think it will be successful?
   The approach we found in a paper is called Stitching-the-Spectrum, which “stitches” different signals together to create samples where signals are overlapping and affected by real-world noises and inferences.
 
@@ -38,6 +38,7 @@ Novel custom DL algorithm for multi-label multi-class spectrum sensing based on 
 operates at the I/Q level instead of creating images
 classifies each I/Q sample incoming from the ADC without creating bounding boxes, thus increasing classification accuracy significantly
 only uses 1024 I/Q samples as input, which leads to very low inference time.
+
 * Potential Impact:
   Technical impacts:
 
@@ -49,13 +50,14 @@ Broad impacts:
 Less amount of data needed for understanding the signal (protocol, MAC address, etc.)
 A more accurate classification result that takes less time
 Significantly lower the difficulty of learning about the information of sensors (their types and locations) in a smart home without prior knowledge
+
 * Challenges:
   Data must be collected Over-the-Air (OTA) to capture real-world channel conditions and prepare the AI in a wireless setting with real radios
 OTA data involves many possible combinations of time an frequency, which significantly increases the complexity in the case of wideband spectrum sensing
 OTA data requires large portions of spectrum without any interference from external systems
 Training data that assumes synchronization between sensing and transmission center frequencies results in poor accuracy
-* Requirements for Success:
 
+* Requirements for Success:
 Resources:
 
 SDRs (USRP N210)
@@ -66,6 +68,7 @@ Skills:
 The usage of USRP N210 Software Defined Radio (SDR) for collecting wireless signals
 Signal Processing skills with GNU Radio or languages like python and MATLAB, etc.
 Understanding of Deep Learning and RF signals
+
 * Metrics of Success:
  For protocol classification:
 
