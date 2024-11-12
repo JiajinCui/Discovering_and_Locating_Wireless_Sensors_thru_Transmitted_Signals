@@ -13,6 +13,8 @@ Limitations of You Only Look Once (YOLO):
 2. Being a viable method for computer vision tasks, YOLO does not achieve the level of resolution required for wireless signals.
 3. Modern wireless signals such as 5G and LoRa can hardly confirm into square bounding boxes which leads to a significant amount of spectrum being incorrectly classified as occupied, leading to poor spectrum efficiency.
 
+![image](https://github.com/user-attachments/assets/53a64b75-943c-4070-b87d-190cf2493493)
+
 
 ## 3. Novelty & Rationale
 
@@ -27,6 +29,9 @@ Novel custom DL algorithm for multi-label multi-class spectrum sensing based on 
 1. operates at the I/Q level instead of creating images
 2. classifies each I/Q sample incoming from the ADC without creating bounding boxes, thus increasing classification accuracy significantly
 3. only uses 1024 I/Q samples as input, which leads to very low inference time.
+
+![image](https://github.com/user-attachments/assets/59a423ca-e433-4612-89a5-04cfc3a3eea9)
+
 
 ## 4. Potential Impact
 
@@ -55,6 +60,8 @@ Resources:
 1. SDRs (USRP N210)
 2. Smart sensors that use different protocols
 3. GPUs
+
+![877D5412-BB41-4833-A95D-E1A05EF7F755](https://github.com/user-attachments/assets/b452bd51-285a-450e-a9b1-3795cb587aa1)
    
 Skills:
 1. The usage of USRP N210 Software Defined Radio (SDR) for collecting wireless signals
@@ -83,8 +90,6 @@ For localization:
 ## 9. Related Work
 
 ### 9.a. Papers
-
-List the key papers that you have identified relating to your project idea and describe how they related to your project. Provide references (with full citation in the References section below).
 
 1. A Survey of Human Activity Recognition in Smart Homes based on IoT Sensors Algorithms: Taxonomies, Challenges and Opportunities with Deep Learning:
 
