@@ -82,6 +82,10 @@ For localization:
 2. Pre-process signals by breaking into shorter signals that are (i) cropped to contain only the actual signal transmission, and (ii) bandpass-filtered to only extract the signal of interest.
 3. Convert the data to the frequency domain through a Fast Fourier Transformation (FFT) and prune the components outside of the band of interest.
 4. Add the processed data to the signal bank.
+
+![image](https://github.com/user-attachments/assets/ab570a91-5ce4-4522-8107-b60b7748a9b7)
+
+
 5. Combine multiple signals to generate a "stitched" wideband signal to be added to the training dataset.
 6. Train the Deep Learning Model with the training dataset.
 7. For each raw IQ signal, we use the corresponding protocol demodulator based on the classification result to demodulate the signal and get usefule information of the packet including the header, address and MAC address.
