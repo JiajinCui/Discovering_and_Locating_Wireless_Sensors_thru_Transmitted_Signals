@@ -76,6 +76,8 @@ For localization:
 
 Describe the key tasks in executing your project, and in case of team project describe how will you partition the tasks.
 
+1. 
+
 ## 9. Related Work
 
 ### 9.a. Papers
