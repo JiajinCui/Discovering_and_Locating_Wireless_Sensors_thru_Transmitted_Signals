@@ -19,7 +19,7 @@ Limitations of You Only Look Once (YOLO):
 The approach we found in a paper is called Stitiching-the-Specturm, which "stitches" different signals together to create samples where signals are overlapping and affected by real-world noises and inferences.
 
 Novel dataset generation pipeline that generate large-scale datasets that 
-1. contains signals collected On The Air(OTA) and are affected by real-world conditions
+1. contains signals collected Over-the-Air(OTA) and are affected by real-world conditions
 2. can be completely labeled
 3. low latency 
 
@@ -76,7 +76,14 @@ For localization:
 
 Describe the key tasks in executing your project, and in case of team project describe how will you partition the tasks.
 
-1. 
+1. Collect signals of different protocols with a BandWidth of around 25MHz centering at 2.4GHz (WiFi, ZigBee) and 916MHz (Z-Wave) transmitted by our sensors of interest
+2. Pre-process signals by breaking into shorter signals that are (i) cropped to contain only the actual signal transmission, and (ii) bandpass-filtered to only extract the signal of interest.
+3. Convert the data to the frequency domain through a Fast Fourier Transformation (FFT) and prune the components outside of the band of interest.
+4. Add the processed data to the signal bank.
+5. Combine multiple signals to generate a "stitched" wideband signal to be added to the training dataset.
+6. Train the Deep Learning Model with the training dataset.
+7. For each raw IQ signal, we use the corresponding protocol demodulator based on the classification result to demodulate the signal and get usefule information of the packet including the header, address and MAC address.
+8. Localize each sensor by calculating the distance between the sensor and the signal receiver based on the change in RSSI
 
 ## 9. Related Work
 
