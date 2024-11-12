@@ -83,7 +83,7 @@ Describe the key tasks in executing your project, and in case of team project de
 5. Combine multiple signals to generate a "stitched" wideband signal to be added to the training dataset.
 6. Train the Deep Learning Model with the training dataset.
 7. For each raw IQ signal, we use the corresponding protocol demodulator based on the classification result to demodulate the signal and get usefule information of the packet including the header, address and MAC address.
-8. Localize each sensor by calculating the distance between the sensor and the signal receiver based on the change in RSSI
+8. Localize each sensor by calculating the distance between the sensor and the signal receiver based on the change in the Received Signal Strength Indicator (RSSI) incurred by changing the physical location of the receiver.
 
 ## 9. Related Work
 
