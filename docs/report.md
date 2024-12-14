@@ -9,12 +9,12 @@
 
 # Abstract
 
-Our project uses USRP N210 Hardware Drives (UHD) and GNU Radio to collect signals being transmitted by differnt smart home sensors using different communication protocols such as WiFi, Zigbee, Z-Wave, etc. We use a spectrum sensing model called Stitching-the-Spectrum to identify and locate those sensors without prior knowledge of their exact locations or functions. We plan to develop a system that autonomously discovers and identifies wireless sensors in a smart home by analyzing RF signals, MAC addresses and communication protocols. Eventually we will localize those sensors by applying geometry with the difference between Received Signal Strength Indicator we receive from differnt locations using multiple USRP N210 as the receivers.
+Our project uses USRP N210 Hardware Drives (UHD) and GNU Radio to collect wireless signals being transmitted by differnt smart home sensors using different communication protocols such as WiFi, Zigbee, Z-Wave, etc. We use a spectrum sensing model called Stitching-the-Spectrum to process signal data and then a U-Net based CNN Deep Learning model to classify the signal type and eventually identify those sensors without prior knowledge of their types. We plan to develop a classification model that autonomously and accurately discovers and classifies wireless sensors in a smart home by transmitted wireless signals.
 
 # 1. Introduction
 
 * Motivation & Objective:
-  Many smart homes are equipped with sensors that collect wireless data about the environment and how people interact with their spaces. Yet, much of this information isn’t fully utilized to understand daily activities and routines. By combining this sensor data with common knowledge about how devices like door, motion, and multi sensors are typically used, we can gain deeper insight into occupants’ behaviors. Our objective is to develop a system that uses advanced AI models to interpret these wireless signals and access the sensor’s location. This will enhance the smart home experience, making it more responsive and intuitive to the needs of its users.
+  Many smart homes are equipped with sensors that collect wireless data about the environment and how people interact with their spaces. Yet, much of this information isn’t fully utilized to understand daily activities and routines. By combining this sensor data with common knowledge about how devices like door, motion, and multi sensors are typically used, we can gain deeper insight into occupants’ behaviors. Our objective is to develop a system that uses advanced AI models to interpret these wireless signals. This will enhance the smart home experience, making it more responsive and intuitive to the needs of its users.
   
 * State of the Art & Its Limitations:
   You Only Look Once (YOLO) is a current widely used object detection model that divides the input (usually an image) into grids. For signal classification, YOLO divide a signal into fixed-length windows, or bounding boxes.
@@ -73,11 +73,12 @@ Understanding of Deep Learning and RF signals
  For protocol classification:
 
 Intersection of Union (IoU): Formula: Area of Intersection / Area of Union to indicate the quality of math between the predicted and ground truth boxes. (1 means perfect overlap and 0 means no overlap at all)
-For localization:
-
-The absolute value of difference between the calculated distance and the actual distance. (The smaller the difference the higher of localization accuracy)
 
 # 2. Related Work
+YOLO (You Only Look Once)
+YOLO is a real-time object detection model that treat object detection as regression problems. The YOLO networks process the entire image at once, predicting bounding boxes and class probabilities at the same time. Compared to traditional two-stage detectors that first generate regional proposals then classify them, YOLO directly outputs class predictions and location coordinates to achieve near real-time performance. Later versions like v2, v3 and v4 aim to improve accuracy and lower latency. 
+
+In conclusion, YOLO detects all objects within an image
 
 # 3. Technical Approach
 
