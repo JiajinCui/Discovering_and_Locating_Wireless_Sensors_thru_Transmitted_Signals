@@ -1,4 +1,4 @@
-<img width="481" alt="Screenshot 2024-12-11 at 12 59 49 PM" src="https://github.com/user-attachments/assets/1028350b-4179-464c-a729-ac3c3c0c844a" /># Table of Contents
+# Table of Contents
 * Abstract
 * [Introduction](#1-introduction)
 * [Related Work](#2-related-work)
@@ -99,7 +99,7 @@ In conclusion, U-Net achieves fine segmentation results even with small training
 ![image](https://github.com/user-attachments/assets/e1d98ed0-70f3-40f5-a22c-70f34f14fe00)
 
 * Training Data Processing
-  Once we have collected signal data for each signal type, we would pre-process the IQ data by removing silence period and extracting signal of interest. First, we apply a bandpass filter using a frequency mask to extract relevant parts of the spectrum and remove any undesired signals that may have been recorded. Once pre-processed, the signals are converted to the frequency domain through a Fast Fourier Transform (FFT). Lastly, in the frequency domain, frequency components outside of the band of interest occupied by the signal are pruned, and the remaining data would be added to the signal bank. For each data type, this procedure is repeated multiple times to generate a final signal bank.
+  Once we have collected signal data for each signal type, we would pre-process the IQ data by removing silence period and extracting signal of interest. First, we apply a bandpass filter using a frequency mask to extract relevant parts of the spectrum and remove any undesired signals that may have been recorded. Once pre-processed, the signals are converted to the frequency domain through a Fast Fourier Transform (FFT). Lastly, in the frequency domain, frequency components outside of the band of interest occupied by the signal are pruned, and the remaining data would be added to the signal bank. Threshold is also introduced to each signal type to remove signal of irrelevant strength (noise). For each data type, this procedure is repeated multiple times to generate a final signal bank.
 
   The signal bank consists of a labeled collection of signals collected when only one signal is transmitted at a time, with known bandwidth and center frequency. The data collection also made sure that the cleanest signal possible is collected by performing the collection over a limited and small portion of the spectrum without interference from other signals.
 
@@ -107,9 +107,22 @@ In conclusion, U-Net achieves fine segmentation results even with small training
 
   <img width="481" alt="Screenshot 2024-12-11 at 12 59 49 PM" src="https://github.com/user-attachments/assets/923565d7-bd6a-4c3c-8d36-70fe7a1f120c" />
 
+* Dataset Generation
+  With signal banks corresponding to each signal type, the semi-augmented dataset generator pipeline would combine those signal banks to generate a "stitched" wideband signal to be added to the training dataset. Relevant parameters include the total number of signal types C, the desired observable bandwidth B, maximum number of signals n_s which can be present in B at a given time, the probablity p_e that the entire observed bandwidth is empty, and the probablity p_c that any one of the signals is located at the center frequency, etc.
+
+  With all these parameters, the pipeline generates M <n_s of signals to be injected into the bandwidth using the following formula.
 
 
+<img width="175" alt="Screenshot 2024-12-13 at 11 53 20 PM" src="https://github.com/user-attachments/assets/1f8aed2b-b9d7-4559-bda5-8334e41d0bdf" />
 
+After M signals are generated, the pipeline assigns a target class to each of the signal. The next step would be determining the position (center frequency) of the signal using
+
+
+<img width="261" alt="Screenshot 2024-12-13 at 11 55 19 PM" src="https://github.com/user-attachments/assets/7e865517-1811-4a47-9bd7-7f300741dc2e" />
+
+Eventually, labels are structured as a matrix L of C x n_iq, where n_iq is the number of I/Q's fed to the Deep Learning model.
+
+* Semantic Spectrum Segmentation
 
 # 4. Evaluation and Results
 * Evaluation Metrics - Intersection over Union (IoU):
