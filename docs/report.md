@@ -179,7 +179,11 @@ Eventually, labels are structured as a matrix L of C x n_iq, where n_iq is the n
 
 # 5. Discussion and Conclusions
 
+Throughout the project, we have processed collected signal data using binary mask, Fast Fourier Transform, threshold and other methods. Then we generated "stitched", labeled signal bank with different types of signals to train our Deep Learning model to classify signal type on the I/Q level. 
 
+We have also modified the model to be able to classify z-wave signal and trained it with a combination of self-collected and synthetic data from the paper, and adjusted thresholds for each signal type to obtain the optimal performance.
+
+We believe there is huge room for improvement for classification in Wi-Fi and LTE. And in the future, we plan to use our own collected data for BLE, Zigbee, LTE protocols to make the model better reflect real-world situations. We also plan to introduce a new class "unknown" to our model so that noise and signals that do not belong to any of our signal types could be identified as unknown signal, which improves the model's ability to handle real-world scenarios.
 
 # 6. References
 [1] Bouchabou, Damien, et al. “A survey of human activity recognition in smart homes based on IoT sensors algorithms: Taxonomies, challenges, and opportunities with deep learning.” Sensors 21.18 (2021): 6037. sensors-21-06037.pdf
