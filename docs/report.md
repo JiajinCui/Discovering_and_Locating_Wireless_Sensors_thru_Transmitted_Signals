@@ -123,6 +123,12 @@ After M signals are generated, the pipeline assigns a target class to each of th
 Eventually, labels are structured as a matrix L of C x n_iq, where n_iq is the number of I/Q's fed to the Deep Learning model.
 
 * Semantic Spectrum Segmentation
+  Our U-Net based DL model can classify I/Q samples being fed to it. The architecture is inspired by U-Net but with 1D CNN kernels instead of 2D. There are totally 5 encoding and decoding block.
+
+  The encoding block has two 1D convolutional layers followed by batch normalization and ReLu activation. There is also a maxpooling layer downsampling the encoded features. The decoding block would take both output features from the previous layer and the encoded features from a skip connection. Last but not least, a non-locol block is introduced to mix up features globally to improve the performance of the system.
+
+  <img width="348" alt="Screenshot 2024-12-14 at 12 10 10 AM" src="https://github.com/user-attachments/assets/02b72d4b-df01-444a-bff6-db9915b5c63d" />
+
 
 # 4. Evaluation and Results
 * Evaluation Metrics - Intersection over Union (IoU):
