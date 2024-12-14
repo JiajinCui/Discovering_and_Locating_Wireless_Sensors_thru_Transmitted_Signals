@@ -80,6 +80,11 @@ YOLO is a real-time object detection model that treat object detection as regres
 
 In conclusion, YOLO detects all objects within an image
 
+U-Net
+U-Net is a convolutional neural network architecture primarily designed for precise and efficient image segmentation tasks. Developped for biomedical image segmentation. This architecture uses skip connections connecting downsampling and upsampling layers to retain spatial information lost during pooling 
+
+In conclusion, U-Net achieves fine segmentation results even with small training datasets, which makes it popular in medical imaging.
+
 # 3. Technical Approach
 
 # 4. Evaluation and Results
