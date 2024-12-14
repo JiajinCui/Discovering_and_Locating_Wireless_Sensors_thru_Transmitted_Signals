@@ -83,6 +83,35 @@ In conclusion, YOLO detects all objects within an image
 # 3. Technical Approach
 
 # 4. Evaluation and Results
+* Evaluation Metrics - Intersection over Union (IoU):
+  IoU was calculated to measure the overlap between the model’s predictions and the ground truth. Higher IoU indicates better alignment with the true signal segmentation.
+  ![image](https://github.com/user-attachments/assets/11582a30-a7d8-4259-951d-5f4649b9547d)
+  ![image](https://github.com/user-attachments/assets/df6de275-a504-4152-9808-1ad661452497)
+* The results demonstrated that the model performed well for most protocols and it achieved high IoU scores for BLE (0.9507), LoRa (0.9940), Zigbee (0.8877), and Z-Wave (0.9802). However, the performance for WiFi (0.3969) and LTE (0.6954) was significantly lower. There are some potential reasons. First, the thresholding used during data preprocessing might not have been optimal for WiFi and LTE signals, leading to inaccurate segmentation. Second, the overlap between WiFi and LTE in the spectrum could have introduced ambiguity, which makes it difficult for the model to distinguish between two protocols. Lastly, the WiFi signals in the dataset may not have been clean enough. Chances are the noise or interference degraded performance. Addressing these issues through better thresholding, improved data quality, and enhanced preprocessing could help improve the model's accuracy for these protocols.
+
+
+![image](https://github.com/user-attachments/assets/73baee3d-61bf-4450-a1cd-8e35bd8c2991)
+* This is the evaluation results for Z-Wave. It demonstrates that the model successfully identifies the Z-Wave protocol with high accuracy, as shown in the spectrogram inference. However, there are instances of misclassification between Z-Wave signals, where noise or unrelated signals are incorrectly labeled as LTE. A potential reason for this misclassification is the absence of an "unknown" class in the model. Without this class, the model is forced to assign a label to all input signals, leading to noise being classified as LTE. 
+
+
+![image](https://github.com/user-attachments/assets/74d41ed2-a84c-49d4-adc5-67af6bcbc8d4)
+* The is the evaluation results for WiFi. Some portions of WiFi signals are identified as LTE. One potential reason for this issue is that there are indeed overlapping LTE signals in the recorded data. Another reason might be true misclassification resulting from our model'a accuracy limitations, particularly in distinguishing between WiFi and LTE due to their overlapping spectral characteristics or insufficient feature differentiation. Since we use recorded data from nesl lab, where the environment is more noisy, the presence of overlapping LTE signals in our recorded data might confuse the model.
+
+
+![image](https://github.com/user-attachments/assets/307d6e21-8805-40cd-9c4f-e7fb99075ab9)
+* The evaluation results for Zigbee shows that the model successfully identifies the Zigbee protocol with high accuracy and it indicated by the distinct identification of the Zigbee signals in the spectrogram inference. However, there are some instances of misclassified signals, where noise or unrelated signals are incorrectly labeled as WiFi. A potential reason for this misclassification is the absence of an "unknown" class in the model, which forces it to assign a known label to all signals. This leads to noise being misclassified as WiFi. 
+
+
+![image](https://github.com/user-attachments/assets/174c1c1d-3333-492e-b1ea-44595dac07db)
+* The evaluation results for LTE shows that the model performs well in identifying LTE signals, as evidenced by the high accuracy in the inference plot. The LTE segments are correctly classified, with minimal misclassifications or noise interference observed. 
+
+
+![image](https://github.com/user-attachments/assets/490ca7bf-199e-44a0-b471-0dbf7ba32b5b)
+* This is the evaluation results for BLE. It demonstrates that the model successfully identifies the BLE protocol in many instances, as reflected in the inference plot. Yet, there are misclassifications where non-BLE signals or noise are labeled as BLE, and occasional BLE signals are mislabeled as other protocols, such as LTE or Z-Wave. This could be due to overlapping frequency bands or the absence of an "unknown" class in the model, forcing it to assign a known protocol label to ambiguous or noisy regions.
+
+
+![image](https://github.com/user-attachments/assets/3cec5447-6cff-4c76-8ea0-97383f267816)
+* The evaluation results for LoRa show that the model confuses most of the LoRa signals with Z-Wave, as reflected in the inference plot. A comparison of the spectrograms for LoRa and Z-Wave reveals that they share similar spectral characteristics, particularly the narrow bandwidth used by both protocols. Also, the chirp patterns of LoRa are not very obvious in the data, making it harder for the model to differentiate between the two protocols. To address this issue, we could improve the dataset by using our own LoRa signals and adjusting the chirp configurations to emphasize the distinctive features of LoRa. This would enable the model to better identify and separate LoRa from Z-Wave signals.
 
 # 5. Discussion and Conclusions
 
