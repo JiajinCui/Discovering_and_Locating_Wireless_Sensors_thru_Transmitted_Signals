@@ -1,8 +1,5 @@
 Original github page and code:  https://github.com/uvaydovd/spectrum_sensing_stitching.git
 
-Our modified code, and models are still in the NESL computer and we are waiting for Gaofeng to get them for us :(
-
-
 # Envrionment
 
 To generate the signal bank, use the data generator, or train the multilabel model with self-attention used in the paper import this environment from yml:
