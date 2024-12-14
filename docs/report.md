@@ -108,9 +108,9 @@ In conclusion, U-Net achieves fine segmentation results even with small training
 
 * Training Data Processing
   
-  Once we have collected signal data for each signal type, we would pre-process the IQ data by removing silence period and extracting signal of interest. First, we apply a bandpass filter using a frequency mask to extract relevant parts of the spectrum and remove any undesired signals that may have been recorded. Once pre-processed, the signals are converted to the frequency domain through a Fast Fourier Transform (FFT). Lastly, in the frequency domain, frequency components outside of the band of interest occupied by the signal are pruned, and the remaining data would be added to the signal bank. Threshold is also introduced to each signal type to remove signal of irrelevant strength (noise). For each data type, this procedure is repeated multiple times to generate a final signal bank.
+  Once we have collected signal data for each signal type, we would pre-process the IQ data by removing silence period and extracting signal of interest. First, we apply a bandpass filter using a frequency mask to extract relevant parts of the spectrum and remove any undesired signals that may have been recorded. Once pre-processed, the signals are converted to the frequency domain through a Fast Fourier Transform (FFT). Lastly, in the frequency domain, frequency components outside of the band of interest occupied by the signal are pruned, and the remaining data would be added to the signal bank. Threshold is also introduced to each signal type to remove signal of irrelevant strength (noise). For each data type, this procedure is repeated multiple times to generate a final signal bank[3].
 
-  The signal bank consists of a labeled collection of signals collected when only one signal is transmitted at a time, with known bandwidth and center frequency. The data collection also made sure that the cleanest signal possible is collected by performing the collection over a limited and small portion of the spectrum without interference from other signals.
+  The signal bank consists of a labeled collection of signals collected when only one signal is transmitted at a time, with known bandwidth and center frequency. The data collection also made sure that the cleanest signal possible is collected by performing the collection over a limited and small portion of the spectrum without interference from other signals[3].
 
   <img width="487" alt="Screenshot 2024-12-11 at 1 12 16 PM" src="https://github.com/user-attachments/assets/91374aca-0090-4386-a894-201f1d2536e2" />
 
@@ -118,17 +118,19 @@ In conclusion, U-Net achieves fine segmentation results even with small training
 
 * Dataset Generation
   
-  With signal banks corresponding to each signal type, the semi-augmented dataset generator pipeline would combine those signal banks to generate a "stitched" wideband signal to be added to the training dataset. Relevant parameters include the total number of signal types C, the desired observable bandwidth B, maximum number of signals n_s which can be present in B at a given time, the probablity p_e that the entire observed bandwidth is empty, and the probablity p_c that any one of the signals is located at the center frequency, etc.
+  With signal banks corresponding to each signal type, the semi-augmented dataset generator pipeline would combine those signal banks to generate a "stitched" wideband signal to be added to the training dataset[3]. Relevant parameters include the total number of signal types C, the desired observable bandwidth B, maximum number of signals n_s which can be present in B at a given time, the probablity p_e that the entire observed bandwidth is empty, and the probablity p_c that any one of the signals is located at the center frequency, etc.
 
   With all these parameters, the pipeline generates M <n_s of signals to be injected into the bandwidth using the following formula.
 
 
 <img width="175" alt="Screenshot 2024-12-13 at 11 53 20 PM" src="https://github.com/user-attachments/assets/1f8aed2b-b9d7-4559-bda5-8334e41d0bdf" />
 
+
 After M signals are generated, the pipeline assigns a target class to each of the signal. The next step would be determining the position (center frequency) of the signal using
 
 
 <img width="261" alt="Screenshot 2024-12-13 at 11 55 19 PM" src="https://github.com/user-attachments/assets/7e865517-1811-4a47-9bd7-7f300741dc2e" />
+
 
 Eventually, labels are structured as a matrix L of C x n_iq, where n_iq is the number of I/Q's fed to the Deep Learning model.
 
@@ -136,7 +138,7 @@ Eventually, labels are structured as a matrix L of C x n_iq, where n_iq is the n
   
   Our U-Net based DL model can classify I/Q samples being fed to it. The architecture is inspired by U-Net but with 1D CNN kernels instead of 2D. There are totally 5 encoding and decoding block.
 
-  The encoding block has two 1D convolutional layers followed by batch normalization and ReLu activation. There is also a maxpooling layer downsampling the encoded features. The decoding block would take both output features from the previous layer and the encoded features from a skip connection. Last but not least, a non-locol block is introduced to mix up features globally to improve the performance of the system.
+  The encoding block has two 1D convolutional layers followed by batch normalization and ReLu activation. There is also a maxpooling layer downsampling the encoded features. The decoding block would take both output features from the previous layer and the encoded features from a skip connection. Last but not least, a non-locol block is introduced to mix up features globally to improve the performance of the system[3].
 
   <img width="348" alt="Screenshot 2024-12-14 at 12 10 10 AM" src="https://github.com/user-attachments/assets/02b72d4b-df01-444a-bff6-db9915b5c63d" />
 
@@ -177,4 +179,15 @@ Eventually, labels are structured as a matrix L of C x n_iq, where n_iq is the n
 
 # 5. Discussion and Conclusions
 
+
+
 # 6. References
+[1] Bouchabou, Damien, et al. “A survey of human activity recognition in smart homes based on IoT sensors algorithms: Taxonomies, challenges, and opportunities with deep learning.” Sensors 21.18 (2021): 6037. sensors-21-06037.pdf
+
+[2] Spectro-temporal RF identification using Deep Learning - arXiv. (n.d.). https://arxiv.org/pdf/2107.05114
+
+[3] Uvaydov, D., Zhang, M., Robinson, C. P., D’Oro, S., Melodia, T., & Restuccia, F. (2024a, February 7). Stitching the spectrum: Semantic Spectrum segmentation with wideband signal stitching. arXiv.org. https://arxiv.org/abs/2402.03465
+
+[4] Semantic Spectrum segmentation with wideband signal … (n.d.). https://ece.northeastern.edu/wineslab/papers/UvaydovINFOCOM2024.pdf
+
+[5] Uvaydovd. (n.d.). Uvaydovd/spectrum_sensing_stitching. GitHub. https://github.com/uvaydovd/spectrum_sensing_stitching.git
