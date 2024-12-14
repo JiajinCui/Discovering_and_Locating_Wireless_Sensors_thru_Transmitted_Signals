@@ -9,7 +9,7 @@
 
 # Abstract
 
-Our project uses USRP N210 Hardware Drives (UHD) and GNU Radio to collect wireless signals being transmitted by differnt smart home sensors using different communication protocols such as WiFi, Zigbee, Z-Wave, etc. We use a spectrum sensing model called Stitching-the-Spectrum to process signal data and then a U-Net based CNN Deep Learning model to classify the signal type and eventually identify those sensors without prior knowledge of their types. We plan to develop a classification model that autonomously and accurately discovers and classifies wireless sensors in a smart home by transmitted wireless signals.
+Our project uses USRP N210 Hardware Drives (UHD) and GNU Radio to collect wireless signals from smart home sensors of different communication protocols such as WiFi, Zigbee, Z-Wave, etc. We use a spectrum sensing model called Stitching-the-Spectrum to process signal data. We would also use a U-Net based CNN Deep Learning model to classify the signal type and eventually identify those sensors without prior knowledge of their types. We plan to develop a classification model that autonomously and accurately discovers and classifies wireless sensors in a smart home by transmitted wireless signals.
 
 # 1. Introduction
 
